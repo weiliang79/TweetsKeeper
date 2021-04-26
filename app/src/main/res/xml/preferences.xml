@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications"
+        android:title="Enable message notifications" />
+
+    <Preference
+        android:key="feedback"
+        android:title="Send Feedback"
+        android:summary="Report technical issues or suggest new features" />
+</PreferenceScreen>
