@@ -1,4 +1,4 @@
-package com.example.tweetskeeper;
+package com.example.tweetskeeper.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

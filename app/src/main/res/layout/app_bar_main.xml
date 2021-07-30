@@ -31,23 +31,30 @@
         android:orientation="vertical">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddTweet"
+            android:id="@+id/fabAddLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_dialog_add"
+            android:src="@drawable/ic_baseline_link"
+            app:tint="@android:color/white"
+            android:rotation="45"
             app:fabSize="mini"
-            app:rippleColor="@color/white" />
+            app:rippleColor="@color/floating_button_selected"
+            android:backgroundTint="@color/floating_button_default" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddTag"
+            android:id="@+id/fabAddBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_dialog_add"
+            android:src="@drawable/ic_icon_bookmark"
+            app:tint="@android:color/white"
             app:fabSize="mini"
-            app:rippleColor="@color/white" />
+            app:rippleColor="@color/floating_button_selected"
+            android:backgroundTint="@color/floating_button_default"
+            app:borderWidth="0dp"
+            android:rotation="45"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
@@ -55,7 +62,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@drawable/ic_dialog_add" />
+            app:rippleColor="@color/floating_button_selected"
+            android:backgroundTint="@color/floating_button_default"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_dialog_add"
+            app:tint="@android:color/white" />
 
     </LinearLayout>
 

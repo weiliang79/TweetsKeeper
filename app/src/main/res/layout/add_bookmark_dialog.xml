@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingVertical="15dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:paddingBottom="10dp"
+            android:text="Add Bookmark"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <RadioGroup
+            android:id="@+id/rgBookmarkType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_add_bookmark_twitter"
+                style="@style/default_radio_button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_icon_twitter_24sp"
+                android:drawableTint="@color/radio_flat_text_selector"
+                android:drawablePadding="10dp"
+                android:text="@string/menu_twitter"
+                android:checked="true"
+                android:background="@drawable/radio_flat_selector"
+                android:textColor="@color/radio_flat_text_selector" />
+
+            <RadioButton
+                android:id="@+id/rb_add_bookmark_other"
+                style="@style/default_radio_button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_baseline_link_24sp"
+                android:drawableTint="@color/radio_flat_text_selector"
+                android:drawablePadding="10dp"
+                android:text="@string/menu_other"
+                android:background="@drawable/radio_flat_selector"
+                android:textColor="@color/radio_flat_text_selector" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/addBookmarkDialogName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:hint="Bookmark Name" />
+
+        <Spinner
+            android:id="@+id/addBookmarkColorSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp">
+
+        <Button
+            android:id="@+id/btn_cancel_add_bookmark"
+            style="@style/default_button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btn_save_add_bookmark"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/btn_save_add_bookmark"
+            style="@style/default_button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Save" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

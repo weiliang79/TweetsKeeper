@@ -14,6 +14,15 @@
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.tweetskeeper.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:label="@string/menu_settings" />
+
+    <fragment
+        android:id="@+id/nav_tweets"
+        android:name="com.example.tweetskeeper.ui.twitter.TweetsMainFragment"
+        android:label="@string/menu_twitter"/>
+
+    <fragment
+        android:id="@+id/nav_others"
+        android:name="com.example.tweetskeeper.ui.other.OthersFragment"
+        android:label="@string/menu_other"/>
 </navigation>
