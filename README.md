@@ -1,6 +1,6 @@
 # Tweets Keeper
 
-This application is still in alpha version. It might be unstable or lack of features that I promised.
+This project is still in alpha version. It might be unstable or lack of features that I promised.
 
 Tweets Keeper is a Open Source Application that helps you bookmarking some social media post from Twitter, Pixiv and more.
 
