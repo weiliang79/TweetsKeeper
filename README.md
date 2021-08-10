@@ -10,6 +10,7 @@ Tweets Keeper is a Open Source Application that helps you bookmarking some socia
 * Create Bookmarks, and store Artworks link from Pixiv (Still under development)
 * Create Bookmarks, and store Videos link from Youtube (Still under development)
 * Create Bookmarks, and store links from other website (Still under development)
+* Receive sharing link from social media apps (Currently only for Twitter)
 * Backup and Restore Database
 
 ## Getting Started
