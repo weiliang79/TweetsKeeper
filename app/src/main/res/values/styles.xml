@@ -25,4 +25,25 @@
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:button">@android:color/transparent</item>
     </style>
+
+    <style name="singleRoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+    
+    <style name="leftRoundedImageView">
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+    </style>
+
+    <style name="rightRoundedImageView">
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+    </style>
+
+    <style name="circleProfileImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

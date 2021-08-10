@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable-anydpi/ic_image.xml" value="0.2520833333333333" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable-anydpi/ic_video.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/divider.xml" value="0.26145833333333335" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/divider_layer.xml" value="0.26145833333333335" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/ic_user.xml" value="0.2635416666666667" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/image_type_background.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/side_nav_bar.xml" value="0.17604166666666668" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/activity_main.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/activity_share.xml" value="0.15989583333333332" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/add_bookmark_dialog.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/add_link_dialog.xml" value="0.20260416666666667" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/add_share_link_dialog.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/app_bar_main.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/bookmark_item.xml" value="0.25833333333333336" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/change_bookmark_dialog.xml" value="0.75" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/content_main.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/fragment_home.xml" value="0.20729166666666668" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/fragment_other.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/fragment_tweets.xml" value="0.27807971014492755" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/fragment_tweets_with_rv.xml" value="0.27807971014492755" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/image_item_four.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/image_item_one.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/image_item_three.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/image_item_two.xml" value="0.67" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/nav_header_main.xml" value="0.27807971014492755" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/others_item.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/spinner_layout.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/tweet_item.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/twitter_tweet_item.xml" value="0.67" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/menu/action_menu.xml" value="0.33" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/menu/activity_main_drawer.xml" value="0.20625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/menu/option_done_menu.xml" value="0.1515625" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.17604166666666668" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/xml/preferences.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

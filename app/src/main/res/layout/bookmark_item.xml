@@ -7,10 +7,9 @@
     android:paddingVertical="8dp"
     android:paddingLeft="4dp"
     android:paddingRight="8dp"
-    android:background="?attr/selectableItemBackground"
+    android:background="@drawable/bookmark_background_color_selector"
     android:clickable="true"
     android:focusable="true"
-    android:tooltipText="test"
     android:orientation="horizontal">
 
     <ImageView

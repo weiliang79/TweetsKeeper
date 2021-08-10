@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="notifications"
-        android:title="Enable message notifications" />
+    <PreferenceCategory android:title="Database">
 
-    <Preference
-        android:key="feedback"
-        android:title="Send Feedback"
-        android:summary="Report technical issues or suggest new features" />
+        <Preference
+            android:key="export_database"
+            android:title="Export Database"
+            android:summary="Export Database at /Tweets Keeper/database.txt" />
+
+        <Preference
+            android:key="import_database"
+            android:title="Import Database"
+            android:summary="Import Database from /Tweets Keeper/database.txt" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+
+        <Preference
+            android:key="about_this_app"
+            android:title="About This App" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

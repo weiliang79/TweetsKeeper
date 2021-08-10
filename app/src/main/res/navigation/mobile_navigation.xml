@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.tweetskeeper.ui.home.HomeFragment"
+        android:name="com.weiliang79.tweetskeeper.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.tweetskeeper.ui.settings.SettingsFragment"
+        android:name="com.weiliang79.tweetskeeper.ui.settings.SettingsFragment"
         android:label="@string/menu_settings" />
 
     <fragment
         android:id="@+id/nav_tweets"
-        android:name="com.example.tweetskeeper.ui.twitter.TweetsMainFragment"
+        android:name="com.weiliang79.tweetskeeper.ui.twitter.TweetsMainFragment"
         android:label="@string/menu_twitter"/>
 
     <fragment
         android:id="@+id/nav_others"
-        android:name="com.example.tweetskeeper.ui.other.OthersFragment"
+        android:name="com.weiliang79.tweetskeeper.ui.other.OthersFragment"
         android:label="@string/menu_other"/>
 </navigation>

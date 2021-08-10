@@ -2,8 +2,8 @@
     <string name="app_name">Tweets Keeper</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Tweets Keeper</string>
+    <string name="nav_header_subtitle"></string>
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Home</string>
@@ -13,31 +13,32 @@
 
     <string name="default_bookmark_location">Bookmark Location: </string>
 
+    <string name="twitter_status_check">status</string>
+
+    <string name="tweets_item_id">id</string>
+
+    <string name="tweets_item_name">name</string>
+
+    <string name="tweets_item_content">Content</string>
+
+    <string name="others_item_title">App Name</string>
+
+    <string name="others_item_url">App URL</string>
+    <string name="others_item_created_date">Created Date</string>
     <string-array name="url_twitter">
         <item>twitter</item>
     </string-array>
 
-    <string name="twitter_status_check">status</string>
-
     <string-array name="url_pixiv">
         <item>pixiv</item>
     </string-array>
-
     <string-array name="url_facebook">
         <item>facebook</item>
     </string-array>
-
     <string-array name="url_youtube">
         <item>youtube</item>
         <item>youtu.be</item>
     </string-array>
 
-    <string name="tweets_item_id">id</string>
-    <string name="tweets_item_name">name</string>
-    <string name="tweets_item_content">Content</string>
-
-    <string name="others_item_title">App Name</string>
-    <string name="others_item_url">App URL</string>
-    <string name="others_item_created_date">Created Date</string>
-
+    <string name="url_github">https://github.com/weiliang79/TweetsKeeper</string>
 </resources>

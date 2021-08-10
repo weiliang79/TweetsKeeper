@@ -20,5 +20,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="This is home fragment" />
+        android:text="Under Construction" />
 </androidx.constraintlayout.widget.ConstraintLayout>
