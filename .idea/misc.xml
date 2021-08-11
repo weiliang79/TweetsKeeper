@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable-anydpi/ic_image.xml" value="0.2520833333333333" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable-anydpi/ic_video.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable-night/bookmark_background_color_selector.xml" value="0.3828125" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/bookmark_background_color_selector.xml" value="0.3828125" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/divider.xml" value="0.26145833333333335" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/divider_layer.xml" value="0.26145833333333335" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/drawable/ic_user.xml" value="0.2635416666666667" />
@@ -30,7 +32,7 @@
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/nav_header_main.xml" value="0.27807971014492755" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/others_item.xml" value="0.20625" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/spinner_layout.xml" value="0.20625" />
-        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/tweet_item.xml" value="0.5" />
+        <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/tweet_item.xml" value="0.3310344827586207" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/layout/twitter_tweet_item.xml" value="0.67" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/menu/action_menu.xml" value="0.33" />
         <entry key="..\:/Android App/TweetsKeeper/app/src/main/res/menu/activity_main_drawer.xml" value="0.20625" />

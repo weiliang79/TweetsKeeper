@@ -12,6 +12,7 @@
     <color name="floating_button_selected">#1561B2</color>
 
     <color name="bookmark_item_selected">#C8E2FF</color>
+    <color name="bookmark_item_selected_dark">#105399</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

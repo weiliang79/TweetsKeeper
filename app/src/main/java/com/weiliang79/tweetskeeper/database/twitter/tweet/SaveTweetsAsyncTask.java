@@ -126,7 +126,7 @@ public class SaveTweetsAsyncTask extends AsyncTask<URL, Void, List<TwitterTweetW
             //Log.e("Twitter", "Start Insert Database");
             twitterTweetViewModel.insertTweetList(twitterTweetsWithMediasList);
             //Log.e("Twitter", "Finish Insert Database");
-            Toast.makeText(context, "Twitter: Tweet info saved.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Tweet info saved.", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(context, "Twitter: Failed to get tweet info.", Toast.LENGTH_SHORT).show();

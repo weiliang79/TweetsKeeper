@@ -208,10 +208,11 @@ public class ShareActivity extends AppCompatActivity {
 
                     if(bookmarkList.size() == 0){
                         Toast.makeText(context, "Database error: no bookmark in record", Toast.LENGTH_SHORT).show();
+                        ShareActivity.this.finish();
                     } else if(bookmarkList.size() == 1){
 
                         new SaveTweetsAsyncTask(context, bookmarkList.get(0).getId(), twitterTweetViewModel).execute(url);
-                        Toast.makeText(context, "Tweet link saved.", Toast.LENGTH_SHORT).show();
+                        ShareActivity.this.finish();
 
                     } else {
                         View addShareLinkView = getLayoutInflater().inflate(R.layout.add_share_link_dialog, null);
