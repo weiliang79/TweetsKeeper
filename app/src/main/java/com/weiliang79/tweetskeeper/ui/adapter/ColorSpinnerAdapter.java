@@ -1,6 +1,7 @@
 package com.weiliang79.tweetskeeper.ui.adapter;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,16 @@ public class ColorSpinnerAdapter extends BaseAdapter {
         icon.setImageResource(R.drawable.ic_icon_bookmark);
         icon.setColorFilter(Color.parseColor(bookmarkColorList.get(position).getHexCode()));
         text.setText(bookmarkColorList.get(position).getRealName());
+
+        switch (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
+            case Configuration.UI_MODE_NIGHT_YES:
+                text.setTextColor(Color.WHITE);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                text.setTextColor(Color.BLACK);
+                break;
+        }
+
         return view;
     }
 }

@@ -1,6 +1,7 @@
 package com.weiliang79.tweetskeeper.ui.twitter;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +68,16 @@ public class TwitterBookmarkSpinnerAdapter extends BaseAdapter {
         text.setText(bookmarkList.get(position).getName());
         icon.setImageResource(R.drawable.ic_icon_bookmark);
         icon.setColorFilter(Color.parseColor(bookmarkColorList.get(bookmarkList.get(position).getColor() - 1).getHexCode()));
+
+        switch (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK){
+            case Configuration.UI_MODE_NIGHT_YES:
+                text.setTextColor(Color.WHITE);
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                text.setTextColor(Color.BLACK);
+                break;
+        }
+
         return view;
     }
 }

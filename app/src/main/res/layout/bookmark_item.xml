@@ -25,6 +25,7 @@
         android:maxWidth="120dp"
         android:maxLines="1"
         android:ellipsize="end"
+        android:textColor="@color/spinner_text_color_selector"
         android:layout_gravity="center_vertical"/>
 
 </LinearLayout>

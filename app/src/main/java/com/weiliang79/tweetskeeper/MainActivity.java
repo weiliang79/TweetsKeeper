@@ -310,8 +310,8 @@ public class MainActivity extends AppCompatActivity {
             Button btnCancel = addBookmarkView.findViewById(R.id.btn_cancel_add_bookmark);
             Button btnSave = addBookmarkView.findViewById(R.id.btn_save_add_bookmark);
 
-            ColorSpinnerAdapter mTwitterBookmarkColorAdapter = new ColorSpinnerAdapter(getApplicationContext());
-            ColorSpinnerAdapter mOtherBookmarkColorAdapter = new ColorSpinnerAdapter(getApplicationContext());
+            ColorSpinnerAdapter mTwitterBookmarkColorAdapter = new ColorSpinnerAdapter(getBaseContext());
+            ColorSpinnerAdapter mOtherBookmarkColorAdapter = new ColorSpinnerAdapter(getBaseContext());
 
             List<BookmarkColor> tbUnusedBookmarkColorList = result.get(0);
             List<BookmarkColor> obUnusedBookmarkColorList = result.get(1);
