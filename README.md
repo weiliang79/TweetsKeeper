@@ -32,10 +32,7 @@ Please wait for further release.
 
 ## Version History
 
-* 0.00-Alpha-1
-   * Initinal Release
-   * Added save Twitter bookmark, Tweet features
-   * Added Database Backup and restore
+* View in [CHANGELOG.md](https://github.com/weiliang79/TweetsKeeper/blob/master/CHANGELOG.md)
 
 ## License
 
