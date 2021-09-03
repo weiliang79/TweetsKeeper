@@ -26,6 +26,10 @@ public class TwitterTweetViewModel extends AndroidViewModel {
         return repository.getTweetsAndMediasWithBookmarkId(bookmark_id);
     }
 
+    public LiveData<TwitterTweetWithMedias> getTweetAndMediasWithTweetId(int tweet_id){
+        return repository.getTweetAndMediasWithTweetId(tweet_id);
+    }
+
     public void insertTweet (TwitterTweetWithMedias twitterTweetWithMedias) {
         repository.insert(twitterTweetWithMedias);
     }

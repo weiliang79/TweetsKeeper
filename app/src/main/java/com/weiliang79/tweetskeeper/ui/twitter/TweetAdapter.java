@@ -4,16 +4,25 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.shape.ShapeAppearanceModel;
+import com.weiliang79.tweetskeeper.MainActivity;
 import com.weiliang79.tweetskeeper.R;
 import com.weiliang79.tweetskeeper.database.twitter.tweet.TwitterTweetWithMedias;
 import com.weiliang79.tweetskeeper.ui.CustomLinearLayoutManager;
@@ -96,10 +105,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
         return twitterTweetsList;
     }
 
+    public void setUnchecked(){
+        for(int i = 0; i < twitterTweetList.size(); i++){
+            twitterTweetList.get(i).twitterTweet.setIsChecked(false);
+        }
+    }
+
     @NonNull
     @Override
     public TweetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = inflater.inflate(R.layout.tweet_item, parent, false);
+
         return new TweetViewHolder(itemView, this);
     }
 
@@ -108,6 +124,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
 
         params = (ViewGroup.MarginLayoutParams) holder.clTweet.getLayoutParams();
 
+        holder.cbTweet.setChecked(twitterTweetList.get(position).twitterTweet.getIsChecked());
         holder.cbTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,7 +197,38 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
                     });
 
         }
+
         holder.clTweet.setLayoutParams(params);
+
+        holder.clTweet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Holder", "Holder " + position + " Clicked");
+                Intent intent = new Intent((MainActivity) context, ViewTweetActivity.class);
+                intent.putExtra("id", twitterTweetList.get(position).twitterTweet.getId());
+                context.startActivity(intent);
+            }
+        });
+
+        holder.rvMedia.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    return v.performClick();
+                }
+                return false;
+            }
+        });
+
+        holder.rvMedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Holder", "Holder " + position + " Clicked");
+                Intent intent = new Intent((MainActivity) context, ViewTweetActivity.class);
+                intent.putExtra("id", twitterTweetList.get(position).twitterTweet.getId());
+                context.startActivity(intent);
+            }
+        });
 
         Glide.with(context)
                 .load(twitterTweetList.get(position).twitterTweet.getUser_profile_pic_url())
@@ -218,6 +266,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
 
         } else {
             holder.rvMedia.setVisibility(View.GONE);
+            //holder.glMedia.setVisibility(View.GONE);
         }
 
         holder.btnToTwitter.setOnClickListener(new View.OnClickListener() {

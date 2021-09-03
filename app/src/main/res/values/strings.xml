@@ -6,7 +6,6 @@
     <string name="nav_header_subtitle"></string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_twitter">Twitter</string>
     <string name="menu_other">Others</string>
@@ -25,13 +24,25 @@
 
     <string name="others_item_url">App URL</string>
     <string name="others_item_created_date">Created Date</string>
+    <string name="url_github">https://github.com/weiliang79/TweetsKeeper</string>
+
+    <string name="twitter_delete_dialog_no_tweet">Are you sure want to delete? (This cannot be undo)</string>
+    <string name="twitter_delete_dialog_have_tweet">Inside the bookmark have Tweets, want to move Tweets or delete? (This cannot be undo)</string>
+    <string name="twitter_delete_dialog_ch_delete">Confirm Delete</string>
+    <string name="twitter_delete_dialog_move_tweet_btn">Move</string>
+    <string name="twitter_delete_dialog_delete_tweet_btn">Delete</string>
+
+    <string name="twitter_delete_progress_dialog_move">Please wait while moving...</string>
+    <string name="twitter_delete_progress_dialog_delete">Please wait while deleting...</string>
+
+    <string name="btn_open_in_twitter">Open in Twitter</string>
     <string-array name="url_twitter">
         <item>twitter</item>
     </string-array>
-
     <string-array name="url_pixiv">
         <item>pixiv</item>
     </string-array>
+
     <string-array name="url_facebook">
         <item>facebook</item>
     </string-array>
@@ -39,6 +50,4 @@
         <item>youtube</item>
         <item>youtu.be</item>
     </string-array>
-
-    <string name="url_github">https://github.com/weiliang79/TweetsKeeper</string>
 </resources>

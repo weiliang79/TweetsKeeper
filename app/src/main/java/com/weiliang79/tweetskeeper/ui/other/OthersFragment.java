@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.weiliang79.tweetskeeper.MainActivity;
 import com.weiliang79.tweetskeeper.R;
 import com.weiliang79.tweetskeeper.database.color.BookmarkColor;
 import com.weiliang79.tweetskeeper.database.color.ColorViewModel;
@@ -13,7 +14,9 @@ import com.weiliang79.tweetskeeper.database.other.bookmark.OtherBookmarkViewMode
 
 import java.util.List;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -29,6 +32,26 @@ public class OthersFragment extends Fragment {
 
     private RecyclerView scrollView;
     private OtherBookmarkAdapter otherBookmarkAdapter;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((MainActivity) getActivity()).setNavItemChecked(R.id.nav_others);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                requireActivity().finish();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_other, container, false);

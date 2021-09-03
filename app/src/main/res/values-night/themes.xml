@@ -14,4 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">@color/black</item>
     </style>
+    <style name="Theme.TweetsKeeper.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
 </resources>

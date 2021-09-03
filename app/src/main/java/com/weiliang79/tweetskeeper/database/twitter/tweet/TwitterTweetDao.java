@@ -14,36 +14,45 @@ import androidx.room.Update;
 public abstract class TwitterTweetDao {
 
     @Query("SELECT * FROM twitter_tweets_table")
-    abstract LiveData<List<TwitterTweet>> getAllTweet();
+    public abstract LiveData<List<TwitterTweet>> getAllTweet();
 
     @Query("SELECT * FROM twitter_tweet_medias_table WHERE tweet_id = :tweet_id")
-    abstract List<TwitterMedia> getMediaList(int tweet_id);
+    public abstract List<TwitterMedia> getMediaList(int tweet_id);
 
+    @Transaction
     @Query("SELECT * FROM twitter_tweets_table WHERE id = :id")
-    abstract TwitterTweetWithMedias getTweet(int id);
+    public abstract TwitterTweetWithMedias getTweet(int id);
+
+    @Transaction
+    @Query("SELECT * FROM twitter_tweets_table WHERE id = :id")
+    public abstract LiveData<TwitterTweetWithMedias> getTweetLiveData(int id);
 
     @Transaction
     @Query("SELECT * FROM twitter_tweets_table")
-    abstract LiveData<List<TwitterTweetWithMedias>> getAllTweetsAndMedias();
+    public abstract LiveData<List<TwitterTweetWithMedias>> getAllTweetsAndMedias();
 
     @Transaction
     @Query("SELECT * FROM twitter_tweets_table WHERE bookmark_id = :bookmark_id")
-    abstract LiveData<List<TwitterTweetWithMedias>> getTweetsAndMediasWithBookmarkId(int bookmark_id);
-
-    @Insert
-    abstract void insertTweet(TwitterTweet... twitterTweets);
-
-    @Insert
-    abstract long insertTweetGetId(TwitterTweet twitterTweet);
-
-    @Insert
-    abstract void insertMedia(TwitterMedia... twitterMedia);
-
-    @Insert
-    abstract void insertMediaList(List<TwitterMedia> twitterMediaList);
+    public abstract LiveData<List<TwitterTweetWithMedias>> getTweetsAndMediasWithBookmarkId(int bookmark_id);
 
     @Transaction
-    void insertTweetWithMedias(TwitterTweetWithMedias... twitterTweetWithMedias) {
+    @Query("SELECT * FROM twitter_tweets_table WHERE bookmark_id = :bookmark_id")
+    public abstract List<TwitterTweetWithMedias> getTweetsAndMediasListWithBookmarkId(int bookmark_id);
+
+    @Insert
+    public abstract void insertTweet(TwitterTweet... twitterTweets);
+
+    @Insert
+    public abstract long insertTweetGetId(TwitterTweet twitterTweet);
+
+    @Insert
+    public abstract void insertMedia(TwitterMedia... twitterMedia);
+
+    @Insert
+    public abstract void insertMediaList(List<TwitterMedia> twitterMediaList);
+
+    @Transaction
+    public void insertTweetWithMedias(TwitterTweetWithMedias... twitterTweetWithMedias) {
 
         for(int i = 0; i < twitterTweetWithMedias.length; i++){
 
@@ -62,16 +71,16 @@ public abstract class TwitterTweetDao {
     }
 
     @Update
-    abstract void updateTweet(TwitterTweet... twitterTweets);
+    public abstract void updateTweet(TwitterTweet... twitterTweets);
 
     @Update
-    abstract void updateMedia(TwitterMedia... twitterMedia);
+    public abstract void updateMedia(TwitterMedia... twitterMedia);
 
     @Update
-    abstract void updateMediaList(List<TwitterMedia> twitterMediaList);
+    public abstract void updateMediaList(List<TwitterMedia> twitterMediaList);
 
     @Transaction
-    void updateTweetWithMedias(TwitterTweetWithMedias... twitterTweetWithMedias) {
+    public void updateTweetWithMedias(TwitterTweetWithMedias... twitterTweetWithMedias) {
         for(int i = 0; i < twitterTweetWithMedias.length; i++){
 
             updateTweet(twitterTweetWithMedias[i].twitterTweet);
@@ -87,16 +96,16 @@ public abstract class TwitterTweetDao {
     }
 
     @Delete
-    abstract void deleteTweet(TwitterTweet... twitterTweets);
+    public abstract void deleteTweet(TwitterTweet... twitterTweets);
 
     @Delete
-    abstract void deleteMedia(TwitterMedia... twitterMedia);
+    public abstract void deleteMedia(TwitterMedia... twitterMedia);
 
     @Delete
-    abstract void deleteMediaList(List<TwitterMedia> twitterMediaList);
+    public abstract void deleteMediaList(List<TwitterMedia> twitterMediaList);
 
     @Transaction
-    void deleteTweetWithMedias(TwitterTweetWithMedias... twitterTweetWithMedias) {
+    public void deleteTweetWithMedias(TwitterTweetWithMedias... twitterTweetWithMedias) {
         for(int i = 0; i < twitterTweetWithMedias.length; i++){
             deleteMediaList(twitterTweetWithMedias[i].twitterMedia);
             deleteTweet(twitterTweetWithMedias[i].twitterTweet);

@@ -107,8 +107,6 @@ public class SaveTweetsAsyncTask extends AsyncTask<URL, Void, List<TwitterTweetW
                 }
 
             } catch (TwitterException e) {
-                //Log.e("Twitter", "Failed to search tweets: " + e.getMessage());
-                Toast.makeText(context, "Failed to search tweet: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 this.twitterException = e;
             }
 

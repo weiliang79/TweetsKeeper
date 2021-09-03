@@ -1,11 +1,14 @@
 package com.weiliang79.tweetskeeper.ui.twitter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.widget.Toolbar;
 
 import com.weiliang79.tweetskeeper.MainActivity;
@@ -55,146 +60,269 @@ public class TweetFragment extends Fragment {
     private TweetAdapter tweetAdapter;
     private OptionMenuHandler optionMenuHandler;
 
-    public TweetFragment (TwitterBookmark twitterBookmark, OptionMenuHandler optionMenuHandler) {
-        this.twitterBookmark = twitterBookmark;
-        this.optionMenuHandler = optionMenuHandler;
+    public TweetFragment () {
+
     }
 
-    @Nullable
+    public static TweetFragment newInstance(int twitterBookmarkId){
+        TweetFragment tweetFragment = new TweetFragment();
+
+        Bundle args = new Bundle();
+        args.putInt("bookmarkId", twitterBookmarkId);
+        tweetFragment.setArguments(args);
+
+        return tweetFragment;
+    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tweets_with_rv, container, false);
+    public void onAttach(@NonNull Activity activity) {
+        super.onAttach(activity);
 
-        initViewModel();
-        toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.getMenu().clear();
-        toolbar.inflateMenu(R.menu.action_menu);
-        navDrawable = toolbar.getNavigationIcon();
-        tvTweetEmpty = view.findViewById(R.id.tvTweetEmpty);
+        try{
+            optionMenuHandler = (OptionMenuHandler) getParentFragment();
+        } catch (ClassCastException e){
+            throw new ClassCastException(getParentFragment().toString() + " must implement MyInterface ");
+        }
 
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((MainActivity) getActivity()).setNavItemChecked(R.id.nav_tweets);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
+            public void handleOnBackPressed() {
 
-                switch (item.getItemId()){
-                    case R.id.menu_move:
+                if(optionsMenuStatus != 0){
 
-                        if(tweetAdapter.getTweetsList().size() == 0){
+                    tweetAdapter.setShowCheckBox(false);
+                    optionMenuHandler.setLockViewPager(true);
 
-                            Toast.makeText(getContext(), "Bookmark List are empty.", Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            toolbar.getMenu().clear();
-                            toolbar.inflateMenu(R.menu.option_done_menu);
-                            toolbar.setNavigationIcon(null);
-
-                            mainActivity.setDrawerLock(true);
-
-                            optionsMenuStatus = 1;
-
-                            tweetAdapter.setShowCheckBox(true);
-                            optionMenuHandler.setLockViewPager(false);
-
-                            toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary_edit));
-
-
+                    toolbar.setNavigationIcon(navDrawable);
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ((MainActivity) getActivity()).onSupportNavigateUp();
                         }
+                    });
+                    toolbar.getMenu().clear();
+                    toolbar.inflateMenu(R.menu.action_menu);
+                    toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary));
 
-                        return true;
-                    case R.id.menu_delete:
+                    mainActivity.setDrawerLock(false);
 
-                        if(tweetAdapter.getTweetsList().size() == 0){
+                    optionsMenuStatus = 0;
 
-                            Toast.makeText(getContext(), "Bookmark List are empty.", Toast.LENGTH_SHORT).show();
+                } else {
 
-                        } else {
+                    requireActivity().finish();
 
-                            toolbar.getMenu().clear();
-                            toolbar.inflateMenu(R.menu.option_done_menu);
-                            toolbar.setNavigationIcon(null);
+                }
 
-                            mainActivity.setDrawerLock(true);
+            }
+        };
 
-                            optionsMenuStatus = 2;
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
 
-                            tweetAdapter.setShowCheckBox(true);
-                            optionMenuHandler.setLockViewPager(false);
+    }
 
-                            toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary_edit));
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.action_menu, menu);
+        navDrawable = toolbar.getNavigationIcon();
+    }
 
-                        }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-                        return true;
-                    case R.id.menu_done:
+        switch (item.getItemId()){
+            case R.id.menu_move:
 
-                        if(tweetAdapter.getTweetsList().size() == 0){
+                if(tweetAdapter.getTweetsList().size() == 0){
 
-                            Toast.makeText(getContext(), "Bookmark List are empty.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Bookmark List are empty.", Toast.LENGTH_SHORT).show();
 
-                        } else {
+                } else {
+                    toolbar.getMenu().clear();
+                    toolbar.inflateMenu(R.menu.option_done_menu);
+                    toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
 
-                            List<TwitterTweetWithMedias> selectedTweetsList = tweetAdapter.getSelectedTweetsList();
-
-                            if (selectedTweetsList.size() != 0) {
-                                switch (optionsMenuStatus) {
-                                    case 1:
-                                        new ChangeBookmarkAsyncTask(getContext(), selectedTweetsList).execute();
-                                        break;
-                                    case 2:
-
-                                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
-                                        alertDialog.setTitle("Delete Confirmation");
-                                        alertDialog.setMessage("Are you sure want to delete these tweets?");
-                                        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                twitterTweetViewModel.deleteTweetList(selectedTweetsList);
-                                                Toast.makeText(getContext(), "Delete Successful", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-
-                                        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                            }
-                                        });
-
-
-                                        alertDialog.setCancelable(true);
-                                        alertDialog.show();
-                                        break;
-                                    default:
-                                }
-
-                            }
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            tweetAdapter.setUnchecked();
                             tweetAdapter.setShowCheckBox(false);
                             optionMenuHandler.setLockViewPager(true);
 
                             toolbar.setNavigationIcon(navDrawable);
+                            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ((MainActivity) getActivity()).onSupportNavigateUp();
+                                }
+                            });
                             toolbar.getMenu().clear();
                             toolbar.inflateMenu(R.menu.action_menu);
                             toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary));
 
                             mainActivity.setDrawerLock(false);
-
                         }
+                    });
 
-                        return true;
+                    mainActivity.setDrawerLock(true);
+
+                    optionsMenuStatus = 1;
+
+                    tweetAdapter.setShowCheckBox(true);
+                    optionMenuHandler.setLockViewPager(false);
+
+                    toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary_edit));
+
                 }
 
-                return false;
-            }
-        });
+                return true;
+            case R.id.menu_delete:
 
-        recyclerView = view.findViewById(R.id.rvTweets);
+                if(tweetAdapter.getTweetsList().size() == 0){
+
+                    Toast.makeText(getContext(), "Bookmark List are empty.", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    toolbar.getMenu().clear();
+                    toolbar.inflateMenu(R.menu.option_done_menu);
+                    toolbar.setNavigationIcon(androidx.appcompat.R.drawable.abc_ic_ab_back_material);
+
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            tweetAdapter.setUnchecked();
+                            tweetAdapter.setShowCheckBox(false);
+                            optionMenuHandler.setLockViewPager(true);
+
+                            toolbar.setNavigationIcon(navDrawable);
+                            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ((MainActivity) getActivity()).onSupportNavigateUp();
+                                }
+                            });
+                            toolbar.getMenu().clear();
+                            toolbar.inflateMenu(R.menu.action_menu);
+                            toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary));
+
+                            mainActivity.setDrawerLock(false);
+                        }
+                    });
+
+                    mainActivity.setDrawerLock(true);
+
+                    optionsMenuStatus = 2;
+
+                    tweetAdapter.setShowCheckBox(true);
+                    optionMenuHandler.setLockViewPager(false);
+
+                    toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary_edit));
+
+                }
+
+                return true;
+            case R.id.menu_done:
+
+                if(tweetAdapter.getTweetsList().size() == 0){
+
+                    Toast.makeText(getContext(), "Bookmark List are empty.", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    List<TwitterTweetWithMedias> selectedTweetsList = tweetAdapter.getSelectedTweetsList();
+
+                    if (selectedTweetsList.size() != 0) {
+                        switch (optionsMenuStatus) {
+                            case 1:
+                                new ChangeBookmarkAsyncTask(getContext(), selectedTweetsList).execute();
+                                break;
+                            case 2:
+
+                                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                                alertDialog.setTitle("Delete Confirmation");
+                                alertDialog.setMessage("Are you sure want to delete these tweets?");
+                                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        twitterTweetViewModel.deleteTweetList(selectedTweetsList);
+                                        Toast.makeText(getContext(), "Delete Successful", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+                                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                });
+
+
+                                alertDialog.setCancelable(true);
+                                alertDialog.show();
+                                break;
+                            default:
+                        }
+
+                    }
+                    tweetAdapter.setUnchecked();
+                    tweetAdapter.setShowCheckBox(false);
+                    optionMenuHandler.setLockViewPager(true);
+
+                    toolbar.setNavigationIcon(navDrawable);
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ((MainActivity) getActivity()).onSupportNavigateUp();
+                        }
+                    });
+                    toolbar.getMenu().clear();
+                    toolbar.inflateMenu(R.menu.action_menu);
+                    toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary));
+
+                    mainActivity.setDrawerLock(false);
+
+                }
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_rv, container, false);
+
+        initViewModel();
+        toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        tvTweetEmpty = view.findViewById(R.id.tvListEmpty);
+
+        recyclerView = view.findViewById(R.id.rvList);
         tweetAdapter = new TweetAdapter(getContext());
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(getContext().getDrawable(R.drawable.divider_layer));
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(tweetAdapter);
 
-        twitterTweetViewModel.getTweetsAndMediasWithBookmarkId(twitterBookmark.getId());
+        twitterTweetViewModel.getTweetsAndMediasWithBookmarkId(getArguments().getInt("bookmarkId"));
 
         return view;
     }
@@ -212,32 +340,11 @@ public class TweetFragment extends Fragment {
         mainActivity = (MainActivity) context;
     }
 
-    public boolean backKeyPressed(){
-
-        if(optionsMenuStatus != 0){
-            tweetAdapter.setShowCheckBox(false);
-            optionMenuHandler.setLockViewPager(true);
-
-            toolbar.setNavigationIcon(navDrawable);
-            toolbar.getMenu().clear();
-            toolbar.inflateMenu(R.menu.action_menu);
-            toolbar.setBackgroundColor(getContext().getResources().getColor(R.color.color_primary));
-
-            mainActivity.setDrawerLock(false);
-
-            optionsMenuStatus = 0;
-            return true;
-        }
-
-        return false;
-
-    }
-
     private void initViewModel(){
 
         twitterTweetViewModel = new ViewModelProvider(getActivity()).get(TwitterTweetViewModel.class);
 
-        twitterTweetViewModel.getTweetsAndMediasWithBookmarkId(twitterBookmark.getId()).observe(
+        twitterTweetViewModel.getTweetsAndMediasWithBookmarkId(getArguments().getInt("bookmarkId")).observe(
                 getViewLifecycleOwner(),
                 new Observer<List<TwitterTweetWithMedias>>() {
                     @Override

@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private TwitterTweetViewModel twitterTweetViewModel;
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavigationView navigationView;
     private NavController navController;
     private Fragment navHostFragment;
 
@@ -129,8 +130,6 @@ public class MainActivity extends AppCompatActivity {
         });
         thread.start();*/
 
-
-
         setContentView(R.layout.activity_main);
 
         //database initialize
@@ -152,11 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
         //drawer layout
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_settings, R.id.nav_tweets, R.id.nav_others)
+                R.id.nav_tweets, R.id.nav_others, R.id.nav_settings)
                 .setDrawerLayout(drawer)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -199,19 +198,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void setNavItemChecked(int id){
+        navigationView.setCheckedItem(id);
+    }
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if(navController.getCurrentDestination().getId() == R.id.nav_tweets){
-            boolean status = ((TweetsMainFragment) navHostFragment.getChildFragmentManager().getPrimaryNavigationFragment()).onKeyDown();
-
-            if(status){
-                return true;
-            }
-
-        }
-
-        return super.onKeyDown(keyCode, event);
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     public void setDrawerLock(boolean setLock){

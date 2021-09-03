@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +21,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
+import com.weiliang79.tweetskeeper.ui.settings.bookmarkmanage.BookmarkManageActivity;
+import com.weiliang79.tweetskeeper.MainActivity;
 import com.weiliang79.tweetskeeper.R;
 import com.weiliang79.tweetskeeper.database.ExportDatabaseAsyncTask;
 import com.weiliang79.tweetskeeper.database.ImportDatabaseAsyncTask;
@@ -29,6 +32,26 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public static final int PERMISSION_REQUEST_FILE_WRITE_READ_CODE = 101;
 
     private Toolbar toolbar;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ((MainActivity) getActivity()).setNavItemChecked(R.id.nav_settings);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                requireActivity().finish();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -45,7 +68,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
 
-        if(preference.getKey().equals("export_database")){
+        if(preference.getKey().equals("manage_bookmark")){
+
+            Intent intent = new Intent((MainActivity) getActivity(), BookmarkManageActivity.class);
+            startActivity(intent);
+
+        } else if(preference.getKey().equals("export_database")){
 
             if(checkPermission()){
                 new ExportDatabaseAsyncTask(getContext()).execute();

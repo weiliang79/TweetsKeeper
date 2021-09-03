@@ -5,6 +5,8 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 public class TweetViewPagerAdapter extends FragmentStateAdapter {
@@ -15,13 +17,13 @@ public class TweetViewPagerAdapter extends FragmentStateAdapter {
         super(fragmentActivity);
     }
 
+    public TweetViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
+    }
+
     public void setFragmentList(List<Fragment> fragmentList) {
         this.fragmentList = fragmentList;
         notifyDataSetChanged();
-    }
-
-    public boolean backKeyPressed(int position){
-        return ((TweetFragment)fragmentList.get(position)).backKeyPressed();
     }
 
     @NonNull
@@ -34,7 +36,5 @@ public class TweetViewPagerAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return fragmentList == null ? 0 : fragmentList.size();
     }
-
-
 
 }

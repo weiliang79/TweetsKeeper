@@ -112,6 +112,10 @@ public class TwitterBookmarkAdapter extends RecyclerView.Adapter<TwitterBookmark
         return twitterBookmarkList == null ? 0 : twitterBookmarkList.size();
     }
 
+    public int getSelectedPos(){
+        return selectedPos;
+    }
+
     public interface RecyclerViewClickListener {
         public void recyclerViewClicked(View v, int position);
     }

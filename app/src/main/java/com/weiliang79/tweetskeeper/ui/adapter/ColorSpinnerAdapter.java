@@ -51,6 +51,7 @@ public class ColorSpinnerAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.spinner_layout, null);
         ImageView icon = (ImageView) view.findViewById(R.id.spinner_color_iv);
         TextView text = (TextView) view.findViewById(R.id.spinner_color_tv);
+
         icon.setImageResource(R.drawable.ic_icon_bookmark);
         icon.setColorFilter(Color.parseColor(bookmarkColorList.get(position).getHexCode()));
         text.setText(bookmarkColorList.get(position).getRealName());

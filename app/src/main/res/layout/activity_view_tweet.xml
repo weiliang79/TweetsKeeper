@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.twitter.ViewTweetActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.TweetsKeeper.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_view_tweet"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.TweetsKeeper.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivTweetView_UserProfilePic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/circleProfileImageView" />
+
+            <TextView
+                android:id="@+id/tvTweetView_userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:text="user_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivTweetView_UserProfilePic"
+                app:layout_constraintTop_toTopOf="@+id/ivTweetView_UserProfilePic" />
+
+            <TextView
+                android:id="@+id/tvTweetView_userScreenName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTweetView_userName"
+                app:layout_constraintTop_toBottomOf="@+id/tvTweetView_userName"
+                android:text="\@user_screen_name" />
+
+            <TextView
+                android:id="@+id/tvTweetView_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                android:maxWidth="300dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTweetView_userName"
+                app:layout_constraintTop_toBottomOf="@+id/tvTweetView_userScreenName"
+                android:text="Status" />
+
+            <TextView
+                android:id="@+id/tvTweetView_dateCreated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tvTweetView_userName"
+                app:layout_constraintTop_toBottomOf="@+id/tvTweetView_status"
+                android:text="Date Created" />
+
+            <Button
+                android:id="@+id/btn_tweet_to_twitter_tweet_view"
+                style="@style/default_button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_icon_twitter_24sp"
+                android:drawableTint="@color/color_primary"
+                android:insetBottom="0dp"
+                android:insetTop="0dp"
+                android:paddingVertical="0dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_open_in_twitter"
+                android:textColor="@color/color_primary_edit"
+                app:layout_constraintTop_toBottomOf="@+id/tvTweetView_status"
+                app:layout_constraintEnd_toEndOf="@+id/tvTweetView_status"/>
+
+            <LinearLayout
+                android:id="@+id/llTweetView_mediaList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tvTweetView_userName"
+                app:layout_constraintTop_toBottomOf="@+id/tvTweetView_dateCreated"
+                app:layout_constraintEnd_toEndOf="@id/btn_tweet_to_twitter_tweet_view"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

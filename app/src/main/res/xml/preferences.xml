@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory android:title="Bookmark">
+
+        <Preference
+            android:key="manage_bookmark"
+            android:title="Manage Bookmark" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="Database">
 
         <Preference

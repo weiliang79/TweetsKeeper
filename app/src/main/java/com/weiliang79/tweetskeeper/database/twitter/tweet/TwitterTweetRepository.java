@@ -27,6 +27,10 @@ public class TwitterTweetRepository {
         return twitterTweetDao.getTweetsAndMediasWithBookmarkId(bookmark_id);
     }
 
+    LiveData<TwitterTweetWithMedias> getTweetAndMediasWithTweetId(int tweet_id) {
+        return twitterTweetDao.getTweetLiveData(tweet_id);
+    }
+
     public void insert (TwitterTweetWithMedias twitterTweetWithMedias) {
         new InsertAsyncTask(twitterTweetDao).execute(twitterTweetWithMedias);
     }

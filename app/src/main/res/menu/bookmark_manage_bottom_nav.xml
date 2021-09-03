@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_twitter"
+        android:icon="@drawable/ic_icon_twitter"
+        android:title="@string/menu_twitter"/>
+    <item
+        android:id="@+id/bottom_nav_other"
+        android:icon="@drawable/ic_baseline_link"
+        android:title="@string/menu_other"/>
+
+</menu>

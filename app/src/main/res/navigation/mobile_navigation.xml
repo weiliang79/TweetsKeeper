@@ -3,18 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.weiliang79.tweetskeeper.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_settings"
-        android:name="com.weiliang79.tweetskeeper.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings" />
+    app:startDestination="@+id/nav_tweets">
 
     <fragment
         android:id="@+id/nav_tweets"
@@ -25,4 +14,10 @@
         android:id="@+id/nav_others"
         android:name="com.weiliang79.tweetskeeper.ui.other.OthersFragment"
         android:label="@string/menu_other"/>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.weiliang79.tweetskeeper.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings" />
+
 </navigation>

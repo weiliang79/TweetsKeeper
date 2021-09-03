@@ -24,6 +24,9 @@ public interface ColorDao {
     @Query("SELECT * FROM bookmark_color_table WHERE id NOT IN (:colorIds)")
     List<BookmarkColor> getUnusedColor(List<Integer> colorIds);
 
+    @Query("SELECT * FROM bookmark_color_table WHERE id = :id LIMIT 1")
+    BookmarkColor getColorWithId(int id);
+
     @Update
     void updateColor(BookmarkColor bookmarkColor);
 
