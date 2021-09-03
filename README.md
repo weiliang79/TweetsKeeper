@@ -2,6 +2,8 @@
 
 This project is still in alpha version. It might be unstable or lack of features that I promised.
 
+During version update in alpha status, database will not migrate to new version of database, please do backups before update. I will noticed in [CHANGELOG.md](https://github.com/weiliang79/TweetsKeeper/blob/master/CHANGELOG.md) if making changes of database.
+
 Tweets Keeper is a Open Source Application that helps you bookmarking some social media post from Twitter, Pixiv and more.
 
 ## Features
